@@ -37,8 +37,8 @@ def get_characters(request):
         charc["nm_character"] = chares.nm_character
         charc["img_character"]= chares.img_character
         charc["fighting_power"]= chares.fighting_power
-        charc["race"]= type_character.objects.get(id=int(chares.type_id)).nm_type_character
-        charc["saga"]= saga.objects.get(id=int(chares.saga_id)).nm_saga
+        charc["race"]= type_character.objects.get(id=int(chares.type_id.id)).nm_type_character
+        charc["saga"]= saga.objects.get(id=int(chares.saga_id.id)).nm_saga
         personagens.append(charc)
     return HttpResponse(json.dumps(personagens), content_type='application/json')
 
@@ -96,10 +96,10 @@ def seeds(request):
     p.type_id_id = 2
     p.saga_id_id = 2
     p.save()
-    p = character(nm_character="Goku",img_character="https://vignette.wikia.nocookie.net/dragonball/images/5/5b/Gokusteppingoutofaspaceship.jpg/revision/latest/scale-to-width-down/224?cb=20150325220848",fighting_power="924")
-    p.type_id_id = 2
-    p.saga_id_id = 2
-    p.save()
+    char1 = character(nm_character="Goku",img_character="https://vignette.wikia.nocookie.net/dragonball/images/5/5b/Gokusteppingoutofaspaceship.jpg/revision/latest/scale-to-width-down/224?cb=20150325220848",fighting_power="924")
+    char1.type_id_id = 2
+    char1.saga_id_id = 2
+    char1.save()
     p = character(nm_character="Goku Super Sayajin 1",img_character="https://dreager1.files.wordpress.com/2011/08/snap2149516qs7.jpg",fighting_power="150000000")
     p.type_id_id = 2
     p.saga_id_id = 2
@@ -152,10 +152,10 @@ def seeds(request):
     p.type_id_id = 2
     p.saga_id_id = 3
     p.save()
-    p = character(nm_character="Vegeta",img_character="",fighting_power="")
-    p.type_id_id = 2
-    p.saga_id_id = 2
-    p.save()
+    char2 = character(nm_character="Vegeta",img_character="",fighting_power="")
+    char2.type_id_id = 2
+    char2.saga_id_id = 2
+    char2.save()
     p = character(nm_character="Vegeta Super Sayajin 1",img_character="",fighting_power="")
     p.type_id_id = 2
     p.saga_id_id = 2
@@ -197,12 +197,12 @@ def seeds(request):
     p.saga_id_id = 4
     p.save()
     
-    tp = fusion(type_fusion_id=1,character1_id=1,character2_id=2,nm_character_fusion="Vegetto")
+    tp = fusion(type_fusion_id=tpf,character1_id=char1,character2_id=char2,nm_character_fusion="Vegetto")
     tp.character1_id_id = 2
     tp.character2_id_id = 15
     tp.type_fusion_id_id = 1
     tp.save()
-    tp = fusion(type_fusion_id=2,character1_id=1,character2_id=2,nm_character_fusion="Gojeta")
+    tp = fusion(type_fusion_id=tpf2,character1_id=char1,character2_id=char2,nm_character_fusion="Gojeta")
     tp.character1_id_id = 14
     tp.character2_id_id = 21
     tp.type_fusion_id_id = 2
