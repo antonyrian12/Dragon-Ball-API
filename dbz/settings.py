@@ -38,10 +38,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'sagas',
     'character',
-    'fusion'
+    'fusion',
+    'corsheaders'
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -58,19 +61,6 @@ WSGI_APPLICATION = 'dbz.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dbz',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306'
-    }
-}
-'''
 
 DATABASES = {
     'default': {
@@ -96,3 +86,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# CORS
+
+CORS_ORIGIN_ALLOW_ALL=True
